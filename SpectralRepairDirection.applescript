@@ -4,7 +4,7 @@ tell application "System Events"
 	
 	set isOpen to count (windows of RX whose name contains "Spectral Repair")
 	if isOpen is 0 then
-		display dialog "Open Spectral Repair window to change direction mode"
+    	display alert "Couldn't find the window!" message "The Spectral Repair window needs to be open to complete this process. Please open the Spectal Repair window and try again."
 	else
 		set spectralRepairWindow to 1st window of RX whose name contains "Spectral Repair"
 		set box1 to value of checkbox 1 of spectralRepairWindow as boolean

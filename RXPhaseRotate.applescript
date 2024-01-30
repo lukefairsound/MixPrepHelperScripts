@@ -7,7 +7,7 @@ tell application "Finder" to tell application "System Events" to tell process "i
 	set isOpen to count (windows whose name contains "Phase")
 	
 	if isOpen is 0 then
-		display alert "Couldn't find window!" message "The Phase window needs to be open to complete this process. Please open the Phase window and try again."
+		display alert "Couldn't find the window!" message "The Phase window needs to be open to complete this process. Please open the Phase window and try again."
 	else
 		click 3rd button of window "Phase"
 		
