@@ -1,24 +1,22 @@
-set d to 0.1
-
-tell application "Finder" to tell application "System Events" to tell process "iZotope RX 10"
-	activate
-	set frontmost to true
+tell application "System Events"
+	set RX to the first application process whose name contains "iZotope"
 	
-	set isOpen to count (windows whose name contains "Phase")
+	set isOpen to count (windows of RX whose name contains "Phase")
 	
 	if isOpen is 0 then
 		display alert "Couldn't find the window!" message "The Phase window needs to be open to complete this process. Please open the Phase window and try again."
 	else
-		click 3rd button of window "Phase"
+		set phaseWindow to the 1st window of RX whose name contains "Phase"
+		set i to the (number of windows of RX) + 1
 		
-		set i to the number of windows
-		set a to the name of window i
+		click 3rd button of phaseWindow
 		
-		repeat while window i exists
-			delay d
+		repeat while window i of RX exists
+			delay 0.1
 		end repeat
 		
-		key code 35 using [control down, shift down, command down, option down]
+		set renderButton to button 1 of group 2 of group 1 of phaseWindow
+		click renderButton
 	end if
 	
 end tell
